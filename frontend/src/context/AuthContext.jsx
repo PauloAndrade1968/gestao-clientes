@@ -1,9 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:3001/api'
-  : 'https://gestao-clientes-production.up.railway.app/api';
+const API_URL = 'https://gestao-clientes-api-jpsx.onrender.com/api';
 
 const AuthContext = createContext();
 

@@ -9,8 +9,7 @@ export default function Precos() {
   const handleUpgrade = async () => {
     if (!user) { navigate('/registo'); return; }
     try {
-      const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : 'https://gestao-clientes-production.up.railway.app/api';
-      const res = await axios.post(`${API_URL}/stripe/checkout`);
+      const res = await axios.post('https://gestao-clientes-api-jpsx.onrender.com/api/stripe/checkout');
       window.location.href = res.data.url;
     } catch (err) {
       alert('Erro ao iniciar pagamento: ' + (err.response?.data?.error || err.message));

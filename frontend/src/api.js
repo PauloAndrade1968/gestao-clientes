@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:3001/api'
-  : 'https://gestao-clientes-production.up.railway.app/api';
-
-const API = axios.create({ baseURL: BASE_URL });
+const API = axios.create({ baseURL: 'https://gestao-clientes-api-jpsx.onrender.com/api' });
 
 API.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
