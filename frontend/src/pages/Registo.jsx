@@ -15,7 +15,8 @@ export default function Registo() {
     setError('');
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:3001/api/auth/register', form);
+      const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : 'https://gestao-clientes-production.up.railway.app/api';
+      const res = await axios.post(`${API_URL}/auth/register`, form);
       login(res.data.token, res.data.user);
       navigate('/dashboard');
     } catch (err) {

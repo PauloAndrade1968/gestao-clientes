@@ -1,6 +1,10 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:3001/api'
+  : 'https://gestao-clientes-production.up.railway.app/api';
+
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -11,7 +15,7 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get('http://localhost:3001/api/auth/me')
+      axios.get(`${API_URL}/auth/me`)
         .then(res => setUser(res.data))
         .catch(() => { localStorage.removeItem('token'); })
         .finally(() => setLoading(false));

@@ -9,7 +9,8 @@ export default function Precos() {
   const handleUpgrade = async () => {
     if (!user) { navigate('/registo'); return; }
     try {
-      const res = await axios.post('http://localhost:3001/api/stripe/checkout');
+      const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : 'https://gestao-clientes-production.up.railway.app/api';
+      const res = await axios.post(`${API_URL}/stripe/checkout`);
       window.location.href = res.data.url;
     } catch (err) {
       alert('Erro ao iniciar pagamento: ' + (err.response?.data?.error || err.message));
