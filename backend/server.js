@@ -15,6 +15,7 @@ app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
 app.use(cors({
   origin: [
     'http://localhost:5173',
+    'https://pauloandrade1968.github.io',
     'https://PauloAndrade1968.github.io'
   ],
   credentials: true
